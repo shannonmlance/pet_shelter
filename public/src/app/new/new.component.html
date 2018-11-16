@@ -1,0 +1,41 @@
+<h3>Know of a pet needing a home?</h3>
+<p *ngFor="let error of errors">{{error}}</p>
+<div class="container bordered">
+  <form (submit)="createOnePetFromService(newPet)" #petForm="ngForm">
+    <div class="form-group">
+      <label>Pet name:</label>
+      <input class="form-control" type="text" name="newPet.name" [(ngModel)]="newPet.name" required minlength="3" #name="ngModel">
+      <p [hidden]="!name.pristine" class="alert alert-danger">Name is required.</p>
+      <p [hidden]="name.valid || name.pristine" class="alert alert-danger">Name must be at least three characters.</p>
+    </div>
+    <div class="form-group">
+      <label>Pet type:</label>
+      <input class="form-control" type="text" name="newPet.type" [(ngModel)]="newPet.type" required minlength="3" #type="ngModel">
+      <p [hidden]="!type.pristine" class="alert alert-danger">Type is required.</p>
+      <p [hidden]="type.valid || type.pristine" class="alert alert-danger">Type must be at least three characters.</p>
+    </div>
+    <div class="form-group">
+      <label>Description:</label>
+      <textarea class="form-control" name="newPet.description" [(ngModel)]="newPet.description" required minlength="3" #description="ngModel"></textarea>
+      <p [hidden]="!description.pristine" class="alert alert-danger">Description is required.</p>
+      <p [hidden]="description.valid || description.pristine" class="alert alert-danger">Description must be at least three characters.</p>
+    </div>
+    <label>Skills:</label>
+    <div class="container">
+      <div class="form-group">
+        <label>Skill 1:</label>
+        <input class="form-control" type="text" name="newPet.skill_one" [(ngModel)]="newPet.skill_one">
+      </div>
+      <div class="form-group">
+        <label>Skill 2:</label>
+        <input class="form-control" type="text" name="newPet.skill_two" [(ngModel)]="newPet.skill_two">
+      </div>
+      <div class="form-group">
+        <label>Skill 3:</label>
+        <input class="form-control" type="text" name="newPet.skill_three" [(ngModel)]="newPet.skill_three">
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Add Pet</button>
+    <button class="btn btn-secondary" [routerLink]="['/pets']">Cancel</button>
+  </form>
+</div>

@@ -1,0 +1,38 @@
+<h3>Edit this pet</h3>
+<p *ngFor="let error of errors">{{error}}</p>
+<div class="container bordered">
+  <form (submit)="editOnePetFromService(editPet._id, editPet)" #petForm="ngForm">
+    <div class="form-group">
+      <label>Pet name:</label>
+      <input class="form-control" type="text" name="editPet.name" [(ngModel)]="editPet.name" required minlength="3" #name="ngModel" value="editPet.name">
+      <p [hidden]="name.valid || name.pristine" class="alert alert-danger">Name is required and must be at least three characters.</p>
+    </div>
+    <div class="form-group">
+      <label>Pet type:</label>
+      <input class="form-control" type="text" name="editPet.type" [(ngModel)]="editPet.type" required minlength="3" #type="ngModel" value="editPet.type">
+      <p [hidden]="type.valid || type.pristine" class="alert alert-danger">Type is required and must be at least three characters.</p>
+    </div>
+    <div class="form-group">
+      <label>Description:</label>
+      <textarea class="form-control" name="editPet.description" [(ngModel)]="editPet.description" required minlength="3" #description="ngModel" value="editPet.description"></textarea>
+      <p [hidden]="description.valid || description.pristine" class="alert alert-danger">Description is required and must be at least three characters.</p>
+    </div>
+    <label>Skills:</label>
+    <div class="container">
+      <div class="form-group">
+        <label>Skill 1:</label>
+        <input class="form-control" type="text" name="editPet.skill_one" [(ngModel)]="editPet.skill_one" value="editPet.skill_one">
+      </div>
+      <div class="form-group">
+        <label>Skill 2:</label>
+        <input class="form-control" type="text" name="editPet.skill_two" [(ngModel)]="editPet.skill_two" value="editPet.skill_two">
+      </div>
+      <div class="form-group">
+        <label>Skill 3:</label>
+        <input class="form-control" type="text" name="editPet.skill_three" [(ngModel)]="editPet.skill_three" value="editPet.skill_three">
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Edit Pet</button>
+    <button class="btn btn-secondary" [routerLink]="['/pets']">Cancel</button>
+  </form>
+</div>

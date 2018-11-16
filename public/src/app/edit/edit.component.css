@@ -1,0 +1,7 @@
+.bordered {
+    border: 1px solid black;
+    padding: 15px;
+}
+.btn {
+    margin-right: 10px;
+}

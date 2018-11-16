@@ -1,0 +1,32 @@
+<h3>Details about {{showPet.name}}</h3>
+<a [routerLink]="['/pets']">Home</a>
+<div class="container">
+  <table class="table">
+    <tbody>
+      <tr>
+        <th scope="col">Pet Type:</th>
+        <td>{{showPet.type}}</td>
+      </tr>
+      <tr>
+        <th scope="col">Description:</th>
+        <td>{{showPet.description}}</td>
+      </tr>
+      <tr>
+        <th scope="col">Skills</th>
+        <td>
+          <ul>
+            <li *ngIf="showPet.skill_one">{{showPet.skill_one}}</li>
+            <li *ngIf="showPet.skill_two">{{showPet.skill_two}}</li>
+            <li *ngIf="showPet.skill_three">{{showPet.skill_three}}</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th scope="col">Likes:</th>
+        <td>{{showPet.likes}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<button class="btn btn-primary" (click)="likeOnePet(showPet._id)" onClick="this.disabled=true">Like this pet</button>
+<button class="btn btn-success" (click)="deleteOnePetFromService(showPet._id)">Adopt this pet</button>
